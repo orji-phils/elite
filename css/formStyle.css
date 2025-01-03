@@ -1,0 +1,118 @@
+/* General Form Styles */
+form {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #6a0dad; /* Purple background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form fieldset {
+    border: none;
+    margin-bottom: 20px;
+}
+
+form legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+    color: #ffffff;
+}
+
+/* Input Styles */
+input[type="text"], input[type="password"], input[type="email"], input[type="date"], input[type="file"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="date"]:focus, textarea:focus {
+    border-color: #32cd32; /* Lime green border on focus */
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Select Styles */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Checkboxes and Radio Buttons */
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 10px;
+}
+
+label[for="checkbox"], label[for="radio"] {
+    margin-left: 5px;
+}
+
+/* Button Styles */
+input[type="submit"], button {
+    width: 100%;
+    padding: 12px;
+    background-color: #32cd32; /* Lime green */
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #228b22; /* Darker green on hover */
+}
+
+/* Password Show/Hide Button */
+button.toggle-password {
+    background-color: #ffd700; /* Gold color */
+    width: auto;
+    font-size: 1em;
+    margin-top: 5px;
+}
+
+button.toggle-password:hover {
+    background-color: #daa520; /* Darker gold on hover */
+}
+
+/* Error and Success Messages */
+#error, #success {
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    max-width: 600px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+#error {
+    background-color: #ff4500; /* Orange-red for errors */
+    color: white;
+}
+
+#success {
+    background-color: #32cd32; /* Lime green for success */
+    color: white;
+}
