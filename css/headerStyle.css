@@ -1,0 +1,92 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: purple;
+    color: white;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4b0082; /* Darker purple for header */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #ffffff;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #6a0dad; /* Medium purple for nav */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+nav ul li {
+    margin: 0;
+    padding: 10px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold color on hover */
+}
+
+/* Success and Error Messages */
+#success {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 600px;
+    text-align: center;
+    background-color: #32cd32; /* Lime green for success */
+    color: black;
+    border-radius: 8px;
+}
+
+#error {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 600px;
+    text-align: center;
+    background-color: #ff4500; /* Orange-red for errors */
+    color: black;
+    border-radius: 8px;
+}
+
+a {
+    color: #1e90ff; /* Bright blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 2em;
+    color: #4CAF50; /* Green for headings */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1em;
+    color: #666; /* Soft gray for paragraphs */
+    text-align: center;
+    margin-bottom: 20px;
+}
