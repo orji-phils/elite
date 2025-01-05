@@ -62,13 +62,15 @@ function pageHeader($title, $successMessage, $errorMessage, $cssFile) {
         <h1>' . $title . '</h1>';
 
         if (isset($successMessage)) {
-            echo '<div id="success">' . $successMessage . '</div>';
-            unset($successMessage);
+            $_SESSION["success"] = $successMessage;
+            echo '<div id="success">' . $_SESSION["success"] . '</div>';
+            unset($_SESSION["success"]);
         }
 
         if (isset($errorMessage)) {
-            echo '<div id="error">' . $errorMessage . '</div>';
-            unset($errorMessage);
+            $_SESSION["error"] = $errorMessage;
+            echo '<div id="error">' . $_SESSION["error"] . '</div>';
+            unset($_SESSION["error"]);
         }
 
         echo '</header>';
