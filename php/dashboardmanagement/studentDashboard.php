@@ -54,7 +54,7 @@ echo "
         <section class="assignments">
             <h3>Assignments</h3>
             <p>View your completed and pending assignments here.</p>
-            <a href="">View assignments</a><br>
+            <a href="viewAssignments.php">View assignments</a><br>
         </section>
     
         <section class="results">
@@ -66,7 +66,7 @@ echo "
         <section class="resources">
             <h3>Resources</h3>
             <p>View available resources for your class.</p>
-            <a href="viewResources.php">resources</a>
+            <a href="viewResources.php">View resources</a>
         </section>
     
         <section class="profile">
