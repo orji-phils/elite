@@ -16,8 +16,7 @@ if (isset($_POST["userName"])) {
 
     // retrieve user's password and type if stored
     $retrievePassword = sqlFunctions("SELECT userName, type, email, password, class FROM signup NATURAL JOIN profile WHERE userName = ?",
-    [$fields["userName"]], null, "Unable to retrieve user credentials now, please try again later", $pdo);
-    $retrievePassword = $retrievePassword ? $retrievePassword->fetch() : "";
+    [$fields["userName"]], null, "Unable to retrieve user credentials now, please try again later", $pdo)->fetch();
 
     if (!empty($retrievePassword["type"])) {
         switch (strtolower($retrievePassword["type"])) {
