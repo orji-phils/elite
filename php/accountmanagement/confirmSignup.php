@@ -74,9 +74,13 @@ if (isset($_POST["userName"])) {
         sendMail($retrieveInfo["email"], $email_subject, $email_message, $successMessage, $errorMessage);
     }
 
-    // delete user record from temp_signup table
+    // delete user record from respective tables
     sqlFunctions("DELETE FROM temp_signup WHERE userName = ?", [$userName], null, null, $pdo);
     sqlFunctions("DELETE FROM notifications WHERE userName = ?", [$userName], null, null, $pdo);
+
+    // reload the page
+    header("Location: confirmSignup.php");
+    exit();
 }
 ?>
 
