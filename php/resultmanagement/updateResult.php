@@ -22,7 +22,7 @@ foreach ($_SESSION["result"] as $key => $value) {
 }
 
 // process the posted data for updating result
-if ($_POST["test"] == "POST") {
+if (isset($_POST["test"])) {
     $isEmpty = FALSE;
     foreach ($_POST as $key => $value) {
         // sanitize the fields
@@ -76,9 +76,9 @@ if (isset($result)) {
     html;
 
     htmlForms("updateResult.php", $formFields, $fields, "Update Result");
+} else {
+    echo "<p>No result found for {$_SESSION["studentUserName"]}, thank you.</p>";
 }
-
-echo "<p>Nor result found for {$studentUserName}, thank you.</p>";
 ?>
 
 <script type="text/javaScript" src="../../javaScript/calculateScores.js"></script>
