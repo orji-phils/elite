@@ -6,7 +6,7 @@ loginStatus($_SESSION["userName"], "Please login to view and create posts.");
 $userName = cleanInput(ucfirst($_SESSION["userName"]));
 
 // retrieve the recent posts stored
-$retrievePost = sqlFunctions("SELECT * FROM posts ORDER BY created_date DESC LIMIT 10", [], null, "Unable to retrieve recent posts, please try again later.", $pdo);
+$retrievePost = sqlFunctions("SELECT * FROM posts ORDER BY created_date DESC LIMIT 10", [], null, "Unable to retrieve recent posts, please try again later.", $pdo)->fetchAll(PDO::FETCH_ASSOC);
 
 // instantiate the formFields
 $formFields = [
@@ -45,7 +45,11 @@ if (isset($_POST["post"])) {
         ];
 
         // transact the prepared data
-        pdoTransaction($transactionData, "Error uploading posts. Please try again later.", $pdo);
+        if (pdoTransaction($transactionData, "Error uploading posts. Please try again later.", $pdo)) {
+            // reload the page
+            header("Location: post.php");
+            exit();
+        }
     }
 }
 
@@ -56,10 +60,11 @@ echo "<p>Hello $userName! Make new public post by typing and optionally adding p
 // display the html form
 htmlForms("post.php", $formFields, $fields, "Post");
 
-// display the recent posts
-echo "<h2>Recent posts</h2>";
-if ($retrievePost) {
-    while ($post = $retrievePost->fetch()) {
+if (!empty($retrievePost)) {
+    // display the recent posts
+    echo "<h2>Recent posts</h2>";
+
+foreach ($retrievePost as $post) {
         // sanitize the result
         foreach ($post as $key => $value) {
             $post[$key] = cleanInput($value);
@@ -78,7 +83,6 @@ if ($retrievePost) {
 } else {
     echo "<p>No new post yet. When posts are made, they are shown here.</p>";
 }
-
 ?>
 
 </body>
