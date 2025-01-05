@@ -5,11 +5,11 @@ require_once "../helperFiles/allFileImport.php";
 loginStatus($_SESSION["userName"], "Please, login to view results.");
 
 // determin the user name for data retrieval
-$userName = $_SESSION["type"] == "Teacher" ?
-$_SESSION["studentUserName"] : $_SESSION["userName"];
+$userName = $_SESSION["type"] == "student" ?
+$_SESSION["userName"] : $_SESSION["studentUserName"];
 
 // fetch the result data if only the session necessary values are available
-if (isset($_SESSION["term"], $_SESSION["session"])) {
+if (isset($_SESSION["term"]) && isset($_SESSION["session"])) {
     // query to retrieve some personal data from the profile table
     $retrievePersonalInfo = sqlFunctions("SELECT firstName, lastName, class FROM profile WHERE userName = ?", [$userName],
 null, "Unable to retrieve the required personal information for the account holder.", $pdo);
