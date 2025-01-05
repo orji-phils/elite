@@ -39,6 +39,8 @@ echo "<div>Select the term and session of the result you want to view.</div>";
 if ($termSession) {
     htmlForms("view.php", $formFields, $fields, "Next");
 } else {
-    echo "<p>Sorry! No result has been recorded, please record a result before updating.</p>";
+    echo $_SESSION["type"] == "student" ?
+    "<p>Sorry! No result recorded for you yet, please check back later.</p>" :
+    "<p>Sorry! No result has been recorded for {$userName}, please record a result to view.</p>";
 }
 ?>
