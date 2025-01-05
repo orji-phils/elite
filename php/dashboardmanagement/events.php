@@ -46,7 +46,7 @@ if (isset($_POST["title"])) {
 }
 
 // display the html page
-pageHeader("Post Event", $_SESSION["success"] == "", $_SESSION["error"] ?? "", "formStyle.css");
+pageHeader("Post Event", $_SESSION["success"] ?? "", $_SESSION["error"] ?? "", "formStyle.css");
 echo "<p>Fill up the fields below with approprate data to post an event.</p>";
 
 // display the form
