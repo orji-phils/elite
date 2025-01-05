@@ -43,7 +43,7 @@ if (isset($_POST["subject"])) {
         $content = "{$subject} assignment posted on the {$_SESSION["post_date"]}.";
         // prepare the transaction data
         $transactionData = [
-            ("INSERT INTO notifications (title, content, status) VALUES(?, ?, ?)" =>
+            "INSERT INTO notifications (title, content, status) VALUES(?, ?, ?)" =>
             [[$title, $content, "unread"],
             null, null],
             "INSERT INTO assignments (subject, end_date, assignment, path, class) VALUES(?, ?, ?, ?, ?)" =>
