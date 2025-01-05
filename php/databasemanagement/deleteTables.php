@@ -2,7 +2,7 @@
 require_once "queryFunctions.php";
 
 // create an array that contains the table names
-$tables = ["result2", "signup", "temp_signup", "profile", "posts", "assignments", "resources", "news", "events", "notifications", "temp_signup"];
+$tables = ["result2", "signup", "temp_signup", "profile", "posts", "assignments", "resources", "news", "events", "notifications"];
 
 foreach ($tables as $table) {
     $t = ucfirst($table);
