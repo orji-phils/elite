@@ -9,10 +9,10 @@ loginStatus($_SESSION["userName"], "Please login to proceed.");
 $userClass = sqlFunctions("SELECT class, type FROM profile WHERE userName = ?", [$_SESSION["userName"]], "", "Unable to retrieve your class info. Please try again later.", $pdo);
 $userClass = $userClass->fetch();
 
-// retrieve the student's class info
+// retrieve the students username 
 $studentInfo = $_SESSION["type"] === "admin" ?
-sqlFunctions("SELECT userName FROM profile WHERE type = 'student'", [], null, "Unable to retrieve students class info. Please try again later.", $pdo) :
-sqlFunctions("SELECT userName FROM profile WHERE class = ? AND type = 'student'", [$userClass["class"]], null, "Unable to retrieve students class info. Please try again later.", $pdo);;
+sqlFunctions("SELECT userName FROM profile WHERE type = 'student'", [], null, "Unable to retrieve students list. Please try again later.", $pdo) :
+sqlFunctions("SELECT userName FROM profile WHERE class = ? AND type = 'student'", [$userClass["class"]], null, "Unable to retrieve students class list. Please try again later.", $pdo);;
 
 // store the student information retrieved in a variable
 $studentNames = [];
@@ -26,7 +26,7 @@ $formFields = [
 ];
 
 // process the selected data
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["studentUserName"])) {
+if (isset($_POST["studentUserName"])) {
     $_SESSION["studentUserName"] = cleanInput($_POST["studentUserName"]);
 
     header("Location: studentInfo.php");
