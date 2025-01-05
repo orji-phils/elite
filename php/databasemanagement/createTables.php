@@ -15,13 +15,8 @@ $tables = [
     "notifications" => "(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR (256) NOT NULL, content VARCHAR (512) NOT NULL, status ENUM('read', 'unread') NOT NULL, userName VARCHAR(60) NOT NULL, create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)"
 ];
 
-// call the function that creates new tables
-createDataTables($tables, $pdo);
-
-// create a function that creates tables with the information  passed to it's parameter
-function createDataTables($table_data, $pdo) {
-    foreach ($table_data as $key => $value) {
-        sqlFunctions("CREATE TABLE {$key} {$value}", [], "{$key} table created successfully.", "Unable to create {$key}. Please try again later.", $pdo);
-    }
+// create the respective tables
+foreach ($tables as $key => $value) {
+    sqlFunctions("CREATE TABLE {$key} {$value}", [], "{$key} table created successfully.", "Unable to create {$key} table. Please try again later.", $pdo);
 }
 ?>
