@@ -5,16 +5,16 @@ require_once "../helperFiles/allFileImport.php";
 loginStatus($_SESSION["userName"], "Please login to view and download assignments.");
 
 // retrieve the assignments posted.
-$retrieveAssignments = sqlFunctions("SELECT * FROM assignments WHERE class = ? ORDER BY create_date DESC LIMIT 5", [$_SESSION["class"]], null, "Unable to retrieve the assignments. Please try again.", $pdo);
+$retrieveAssignments = sqlFunctions("SELECT * FROM assignments WHERE class = ? ORDER BY create_date DESC LIMIT 5", [$_SESSION["class"]], null, "Unable to retrieve the assignments. Please try again.", $pdo)->fetchAll(PDO::FETCH_ASSOC);
 
 // display the html page
 pageHeader("View assignments", $_SESSION["success"] ?? "", $_SESSION["error"] ?? "", null);
 echo "<p>Below are the assignments uploaded for your class. Click on the download link to save the chosen file to your computer.</p>";
 
 // display the file and it's info if available.
-if ($retrieveAssignments) {
+if (!empty($retrieveAssignments)) {
     echo "<h2>The available assignments Are:</h2>";
-    while ($assignment = $retrieveAssignments->fetch()) {
+    foreach ($retrieveAssignments as $assignment) {
         // sanitize the data retrieved.
         foreach ($assignment as $key => $value) {
             if ($key != "path") {
