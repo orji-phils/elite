@@ -5,16 +5,16 @@ require_once "../helperFiles/allFileImport.php";
 loginStatus($_SESSION["userName"], "Please login to view and download resources.");
 
 // retrieve the resources posted.
-$retrieveResources = sqlFunctions("SELECT * FROM resources WHERE class = ? ORDER BY create_date DESC LIMIT 5", [$_SESSION["class"]], null, "Unable to retrieve the resources. Please try again.", $pdo);
+$retrieveResources = sqlFunctions("SELECT * FROM resources WHERE class = ? ORDER BY create_date DESC LIMIT 5", [$_SESSION["class"]], null, "Unable to retrieve the resources. Please try again.", $pdo)->fetch(PDO::FETCH_ASSOC);
 
 // display the html page
 pageHeader("View Resources", $_SESSION["success"] ?? "", $_SESSION["error"] ?? "", null);
 echo "<p>Below are the resources uploaded for your class. Click on the download link to save the chosen file to your computer.</p>";
 
 // display the file and it's info if available.
-if ($retrieveResources) {
+if (!empty($retrieveResources)) {
     echo "<h2>The available Resources Are:</h2>";
-    while ($resource = $retrieveResources->fetch()) {
+    foreach ($retrieveResources as $resource) {
         // sanitize the data retrieved.
         foreach ($resource as $key => $value) {
             if ($key != "path") {
